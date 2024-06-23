@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback</title>
+</head>
+<body>
+    <h1>Callback Page</h1>
+    <p>Processing your authorization...</p>
+    <script>
+        // Extract the authorization code from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const authCode = urlParams.get('code');
+
+        if (authCode) {
+            // Display the authorization code (for testing purposes)
+            document.write(`<p>Authorization Code: ${authCode}</p>`);
+
+            // Here you would typically send the authCode to your backend to exchange for an access token
+            // Example:
+            // fetch('https://your-backend.com/exchange-token', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify({ code: authCode })
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     console.log('Access Token:', data.access_token);
+            // })
+            // .catch(error => console.error('Error:', error));
+        } else {
+            document.write('<p>No authorization code found in the URL.</p>');
+        }
+    </script>
+</body>
+</html>
